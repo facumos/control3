@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                        
 % Cuando extraigan los puntos de Proteus van a notar que no fueron        %
-% generados con un paso fijo, necesario para que podamos procesarlo en lo %
-% que vamos a hacer luego.                                                %
+% generados con un paso fijo, el cual necesario para que podamos          %
+% procesarlo en lo que vamos a hacer luego.                               %
 %                                                                         %
 % Este código fue creado para cargar los datos de Proteus y cambiarle la  %
 % base de tiempo a un paso fijo con el que se pueda trabajar.             %
