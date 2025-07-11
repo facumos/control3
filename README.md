@@ -13,7 +13,7 @@ Este repositorio contiene códigos de MATLAB y Python para acompañar las clases
 
 ## Requisitos
 
-- MATLAB (versión XX o superior)
+- MATLAB 
 - Python 3.8+ con bibliotecas como numpy, scipy, matplotlib (si se incluyen ejemplos en Python)
 
 ## Cómo usar
