@@ -1,6 +1,6 @@
 # Curso de Control - Material Complementario
 
-Este repositorio contiene códigos de MATLAB y Python para acompañar las clases del curso de control.
+Este repositorio contiene códigos de MATLAB para acompañar las clases del curso de control.
 
 ## Contenidos
 
