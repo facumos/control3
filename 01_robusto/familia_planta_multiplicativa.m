@@ -19,11 +19,13 @@ L = linspace(0,0.1,n); % genero n puntos equiespaciados
 nl = 1e3;
 a  = -3;
 b  = 2;
-ww = logspace(-2,3,nl); % ww tiene nl puntos entre 10^a y 10^b
+% ww tiene nl puntos entre 10^a y 10^b espaciados logarítmicamente
+ww = logspace(-2,3,nl); 
 
-% Finalmente hago un gráfico con la familia de modelos para ese retardo:
+% Finalmente hago un gráfico en frecuencia con la familia de modelos:
 for i =1:n
     G.IODelay = L(i);
+    % freqresp nos da la respuesta en frequencia (j\omega) para los ww
     sys_resp    = squeeze(freqresp(G,ww));
     sys_resp0   = squeeze(freqresp(G0,ww));
 
