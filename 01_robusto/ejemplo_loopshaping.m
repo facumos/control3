@@ -11,7 +11,7 @@ clc,clear,close all
 s  = tf('s');
 g0 = 1/s;
 
-% Incertidumbre de modelo
+% Incertidumbre de modelo (multiplicativa)
 Wm = 0.125*s/(1+s/25);
 
 % Incertidumbre de perturbacion/referencia

@@ -4,7 +4,7 @@
 % mathworks.com/matlabcentral/fileexchange/10183-bode-plot-with-asymptotes%
 % MATLAB Central File Exchange. Retrieved July 31, 2025.                  %
 %									  %
-% Sin embargo en este código fue editada para que solamente realice un    %
+% Sin embargo en este código fue editado para que solamente realice un    %
 % bode de módulo.							  %						
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
