@@ -22,14 +22,17 @@ b  = 2;
 % ww tiene nl puntos entre 10^a y 10^b espaciados logarítmicamente
 ww = logspace(-2,3,nl); 
 
+% freqresp nos da la respuesta en frequencia (j\omega) para los ww
+sys_resp0   = squeeze(freqresp(G0,ww));
+
 % Finalmente hago un gráfico en frecuencia con la familia de modelos:
 for i =1:n
+    % Actualizo el retardo variable (caso de ejemplo particular)
     G.IODelay = L(i);
-    % freqresp nos da la respuesta en frequencia (j\omega) para los ww
+    % Calculo la respuesta en frecuencia en cada caso
     sys_resp    = squeeze(freqresp(G,ww));
-    sys_resp0   = squeeze(freqresp(G0,ww));
 
-    % Cálculo de la incerteza multiplicativa en j\omega
+    % Cálculo de la relación de la incerteza multiplicativa en j\omega
     incert_mult = sys_resp./sys_resp0-1;    
     
     % Grafico de módulo en escala logarítmica del eje x
