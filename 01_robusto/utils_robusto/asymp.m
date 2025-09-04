@@ -1,13 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% asymp() es una función del repositorio de Matlab:                       %
-% Trond Andresen (2025). Bode plot with asymptotes                        %
-% mathworks.com/matlabcentral/fileexchange/10183-bode-plot-with-asymptotes%
-% MATLAB Central File Exchange. Retrieved July 31, 2025.                  %
-%									  %
-% Sin embargo en este código fue editado para que solamente realice un    %
-% bode de módulo.							  %						
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 function asymp(sys,wlow,whigh);
 % The function asymp() corresponds to bode(), 
 % but it also plots asymptotes for the magnitude 
@@ -45,7 +35,7 @@ phase=squeeze(phase);
 %     % bode( ) sometimes shifts a phase plot +360 degrees in a misleading way, so 
 %     % this is an attempt to rectify this. But the criteria are admittedly a bit arbitrary ;-)
 % end
-plot(w,phase,'LineWidth',1.5);
+% plot(w,phase,'LineWidth',1.5);
 % Order of denominator polynomial and
 % number of pure integrators, if any, are found:
 dendeg = length(den)-1;
@@ -159,4 +149,46 @@ plot(freqpoints(1:2),magpoints(1:2),'r-','LineWidth',1.3);
 plot(freqpoints(np-1:np),magpoints(np-1:np),'r-','LineWidth',1.3);
 hold off;
 
-
+% % Phase asymptote plot on top of phase part of Bode diagram. 
+% % First make the phase axes current, and plot grid:
+% h=get(findall(get(gcf,'Children'),'String','Phase (deg)'),'Parent');
+% axes(h);
+% hold on;
+% grid;
+% Phase asymptotes may exceed current upper and lower limit
+% values in phase diagram. Find max and min phase asymptote
+% values, and re-scale phase diagram:
+% phmax=max([phapoints,phase']); phmin=min([phapoints,phase']);
+% yspan = phmax-phmin;
+% for ydelta = [10 15 30 45 90 180]
+%     yhlp = yspan/ydelta;
+%     if yhlp < 8 
+%         break; 
+%     end
+% end
+% phmin=ydelta*floor(phmin/ydelta); phmax=ydelta*ceil(phmax/ydelta);
+% if phmin == phmax 
+%     phmin = phmin-45; phmax=phmax+45;
+% end
+% phlimitincr=(phmax-phmin)*0.02;
+% set(get(gcf, 'CurrentAxes'),'YLim',[phmin phmax]);
+% yscaleph = axis;
+% yscaleph(3) = phmin-phlimitincr; yscaleph(4) = phmax+phlimitincr;
+% axis(yscaleph);
+% % Generate more frequency points to enable vertical lines
+% % at break frequencies:
+% freqpoints= sort([freqpoints(1:np-1),freqpoints(2:np)]);
+% np=length(freqpoints);
+% plot(freqpoints(2:np-1),phapoints(2:np-1),'r.-','MarkerSize',14,'LineWidth',1.3);
+% % No dots at start and end points:
+% plot(freqpoints(1:2),phapoints(1:2),'r-','LineWidth',1.3);
+% plot(freqpoints(np-1:np),phapoints(np-1:np),'r-','LineWidth',1.3);
+% set(get(gcf, 'CurrentAxes'),'YTick',phmin:ydelta:phmax);
+% % Converting frequency axis to decimal numbers:
+% x=get(gca, 'XTickLabel');
+% %x=str2num(x); x=10.^x; x=num2str(x);
+% x = strrep(x,'{',''); x = strrep(x,'}','');
+% for i=1:length(x), x{i} = num2str(str2num(x{i})); end
+% set(gca, 'XTickLabel',x);
+% grid;
+% hold off;

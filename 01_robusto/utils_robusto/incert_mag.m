@@ -26,30 +26,28 @@ indices = find(Wm_db > 0);
 w_Wm_M0 = w_Wm(indices);
 
 if w_Wd_m0(1)>10*w_Wm_M0(1)
-    disp('Â¡Revisar los cruces de las incertidumbres!')
+    disp('¡Revisar los cruces de las incertidumbres!')
 else
-    % Valor mÃ¡ximo (en general en baja frecuencia)
-    max_db = max(Wd_db);  % o Wd_db(1) si sabÃ©s que es monÃ³tona decreciente
-    % Nivel de -3 dB respecto al mÃ¡ximo
+    % Valor máximo (en general en baja frecuencia)
+    max_db = max(Wd_db);  % o Wd_db(1) si sabés que es monótona decreciente
+    % Nivel de -3 dB respecto al máximo
     umbral_3db = max_db - 3;
     % Buscar el primer cruce
     idx = find(Wd_db <= umbral_3db, 1, 'first');
     w_Wd_3db = w_Wd(idx);
 
-    % Valor mÃ¡ximo
-    max_db = max(Wm_db);  
-    % Nivel de -3 dB respecto al mÃ¡ximo
-    umbral_3db = max_db - 3;
-    % Buscar el primer cruce
-    idx = find(Wd_db <= umbral_3db, 1, 'first');
+    % Buscar cruce de Wm por cero
+    idx = find(Wm_db >= 0, 1, 'first');% umbral_3db, 1, 'first');
     w_Wm_3db = w_Wm(idx);
 
-    % Armado del grÃ¡fico:
+    % Armado del gráfico:
     % Primer parte --> |Wd|>1>|Wm|
     nl = 100;
+%     a = log10(w_Wd_3db)-2;
     a = log10(w_Wd_3db)-2;
     b = log10(w_Wd_3db);
-    % ww tiene nl puntos entre 10^a y 10^b espaciados logarÃ­tmicamente
+%     b = log10(w_Wd_3db);
+    % ww tiene nl puntos entre 10^a y 10^b espaciados logarítmicamente
     ww1 = logspace(a,b,nl); 
 
     Wd_resp1 = squeeze(freqresp(Wd,ww1));
@@ -59,7 +57,7 @@ else
     nl = 100;
     a = log10(w_Wm_3db);
     b = log10(w_Wm_3db)+2;
-    % ww tiene nl puntos entre 10^a y 10^b espaciados logarÃ­tmicamente
+    % ww tiene nl puntos entre 10^a y 10^b espaciados logarítmicamente
     ww2 = logspace(a,b,nl); 
 
     Wm_resp2 = squeeze(freqresp(Wm,ww2));
@@ -79,14 +77,3 @@ else
     wd_min = w_Wd(1);
     wm_max = w_Wm(end);
 end
-
-
-
-
-
-
-
-
-
-
-
