@@ -3,7 +3,7 @@
 % punto de máximo cambio.                                                 %
 %                                                                         %
 % Además esta función devuelve las ganancias para un P, PI y PID ajustadas%
-% mediante la tabla de Cohen-Coon                                         %
+% mediante Ziegler-Nichols		                                  %
 %                                                                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [model,controller]=ReactionCurve(t,y,u)
